@@ -73,5 +73,7 @@ class LibccdConan(ConanFile):
         self.cpp_info.names["cmake_find_package"] = "ccd"
         self.cpp_info.names["cmake_find_package_multi"] = "ccd"
         self.cpp_info.libs = tools.collect_libs(self)
+        if not self.options.shared:
+            self.cpp_info.defines.append("CCD_STATIC_DEFINE")
         if self.settings.os == "Linux":
             self.cpp_info.system_libs.append("m")
