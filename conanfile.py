@@ -57,7 +57,7 @@ class LibccdConan(ConanFile):
         self._cmake = CMake(self)
         self._cmake.definitions["BUILD_DOCUMENTATION"] = False
         self._cmake.definitions["ENABLE_DOUBLE_PRECISION"] = self.options.enable_double_precision
-        self._cmake.definitions["CCD_HIDE_ALL_SYMBOLS"] = False
+        self._cmake.definitions["CCD_HIDE_ALL_SYMBOLS"] = not self.options.shared
         self._cmake.configure(build_folder=self._build_subfolder)
         return self._cmake
 
